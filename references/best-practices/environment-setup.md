@@ -323,15 +323,17 @@
 
 - Local installation:
     - Local installation of `Markdownlint-cli2` is not necessary as it is already included in the `VS Code extensions`.
-    1. Run `[bash] touch .mardownlint.yaml` to create a new config file.
-    2. Run `[bash] code .mardownlint.yaml` to open the file and add the following text to configure the rules.
+    1. Run `[bash] touch .mardownlint-cli2.jsonc` to create a new config file.
+    2. Run `[bash] code .mardownlint-cli2.jsonc` to open the file and add the following text to configure the rules.
 
         ```file
-            default: true
-            MD007:
-                indent: 4
-            MD033: false
-            MD013: false
+            {
+                "config":{
+                    "default": true,
+                    "MD007": {"indent": 4},
+                    "MD033": false,
+                    "MD013": false}
+            }
         ```
 
 - `VS Code`:
@@ -342,7 +344,8 @@
             "markdownlint.config": {
                 "default": true,
                 "MD007": {"indent": 4},
-                "MD033": false
+                "MD033": false,
+                "MD013": false
             }
         ```
 
