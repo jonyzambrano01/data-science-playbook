@@ -19,13 +19,13 @@
 - Commits:
     - Commit every time you have added a new piece of code (unit of work) that is working and compiles.
     - Run ```[bash] pre-commit``` before each commit to verify everything is working well.
-    - If the `Gitlint` pre-commit fails run `[bash] git_last_msg` - which is an alias of `[bash]git log -1 --pretty=%B` - to retrieve the last message.
+    - If the `Gitlint` pre-commit fails run `[bash] git_last_msg` - which is an alias of `[bash]git log -1 --pretty=%B` - to retrieve the last message or run `[bash] git commit --amend` to try again.
 - Push: only push when the feature/problem you are working on is done.
 - Pull & fetch: every time you are going to start and before committing.
 - Solo projects workflow:
     - Follow the [Git for solo development guide](https://rb.gy/ewfiap), the [Git quick guide](https://rb.gy/102pkh), and the [Git workflows documentation](https://rb.gy/a2arsk).
     - Create the following branches:
-        - master: public branch of the project. It can be altered only from the dev branch.
+        - Main: public branch of the project. It can be altered only from the dev branch.
         - dev: development branch for maintenance, bug-fixing, or modifying features.
         - For complex enough projects that are production-oriented:
             - feature-name-branch: whenever there is a new big enough feature that can be developed independently from the dev branch.
@@ -41,7 +41,7 @@
         # Commit - make sure to use a template
         git commit
         # Switch branches
-        git checkout master
+        git checkout main
         # Merge branches into master
         git merge dev
         # Push to origin (remote)
