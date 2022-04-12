@@ -158,7 +158,7 @@
 11. Create additional branches and do the workflow setup.
 12. Aliases:
     1. Run `[bash] code $HOME/.bashrc` to open the `Bash shell script`.
-    2. Add `[file] alias git_last_msg="git log -1 --pretty=%B"` to the file and save it to create an alias to get the last `Git` message.
+    2. Add `[file] alias git_last_msg="git log -1 --pretty=%B"` to the file and save it to create an alias to get the last `Git`  commit message.
     3. Run `[bash] source $HOME/.bashrc` to apply the changes on the `Bash shell script`.
 13. Pre-commits:
     1. Run `[bash] poetry add gitlint` to install `Gitlint`.

@@ -16,7 +16,10 @@
 ### Git Workflow
 
 - Usage: use Git for all your projects, no matter the size.
-- Commits: commit every time you have added a new piece of code (unit of work) that is working and compiles. Run ```[bash] pre-commit``` before each commit.
+- Commits:
+    - Commit every time you have added a new piece of code (unit of work) that is working and compiles.
+    - Run ```[bash] pre-commit``` before each commit to verify everything is working well.
+    - If the `Gitlint` pre-commit fails run `[bash] git_last_msg` - which is an alias of `[bash]git log -1 --pretty=%B` - to retrieve the last message.
 - Push: only push when the feature/problem you are working on is done.
 - Pull & fetch: every time you are going to start and before committing.
 - Solo projects workflow:
@@ -35,8 +38,8 @@
         git status
         # Add files
         git add -A
-        # Commit
-        git commit -m "commit message"
+        # Commit - make sure to use a template
+        git commit
         # Switch branches
         git checkout master
         # Merge branches into master
