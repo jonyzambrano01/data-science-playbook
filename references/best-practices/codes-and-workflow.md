@@ -60,6 +60,8 @@
         git merge dev
         # Push to origin (remote)
         git push
+        # Go back to dev
+        git checkout dev
         ```
 
     - Paths: avoid absolute paths as this makes is difficult to collaborate. Use relative paths instead.
