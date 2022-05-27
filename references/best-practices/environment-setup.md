@@ -21,11 +21,6 @@
 
 ## Global Setup
 
-### Symlinks
-
-1. From `VS Code` in a `Linux` session, open a new terminal in your `Linux` user folder.
-2. Run `[bash] ln -s <folder path> <name of link>` to add a symbolic link to the `Windows` folders.
-
 ### VS Code
 
 1. From `VS Code` in a `Linux` session, open a new terminal in your `Linux` user folder.
@@ -99,8 +94,10 @@
     9. Run `[bash] code $HOME/.bashrc` to open the `Bash shell script`.
     10. Add `[file] export PATH="$PATH:<user base binary directory>/bin"` to the file and save it to locate the user-level installed libraries going forward.
     11. Add `[file] alias python=python3` to the file and save to use `Python 3` as default going forward.
-    12. Run `[bash] source $HOME/.bashrc` to apply the changes on the `Bash shell script`.
-    13. Repeat the same installation process `[bash] pyenv install -v <python version>` for each `Python` version that needs to be installed.
+    12. Run `[bash] code $HOME/.bashrc` to open the `Bash shell script`.
+    13. Add `[file] alias git_last_msg="git log -1 --pretty=%B"` to the file and save it to create an alias to get the last `Git`  commit message.
+    14. Run `[bash] source $HOME/.bashrc` to apply the changes on the `Bash shell script`.
+    15. Repeat the same installation process `[bash] pyenv install -v <python version>` for each `Python` version that needs to be installed.
 - `Pip`:
     1. From `VS Code` in a `Linux` session, open a new terminal in your `Linux` user folder.
     2. Run `[bash] pyenv global <python version>` to activate an specific `Python` version.
@@ -130,7 +127,7 @@
 1. From `VS Code` in a `Linux` session, open a new terminal in your `Linux project` folder.
 2. Run `[bash] poetry shell` to activate the environment and extract the virtual environment path.
 3. Add the next setting to the `VS Code` setting JSON `[file] "python.defaultInterpreterPath": "<virtual environment path>/bin/python"` to add the virtual environment to the settings. Get the path running `[bash] poetry show -v`.
-4. Cd to the `.vscode` folder and run `[bash] touch .gitignore` to exclude the `VS Code` config from the `Git` workflow.
+4. Cd to the `.vscode` folder and run `[bash] touch .gitignore`, then run `[bash] code .gitignore` to open the file and add `*` to the first line to exclude the `VS Code` config from the `Git` workflow. Save and close.
 
 ### Git and GitHub
 
@@ -149,18 +146,9 @@
     ```
 
 9. Run `[bash] touch .gitkeep` on the empty folders that are necessary to keep.
-10. Connect to `GitHub`:
-    1. Create a new empty repository on `GitHub`.
-    2. Run `[bash] git commit` to commit for the first time.
-    3. Run `[bash] git branch -M main` to create the `main` branch.
-    4. Run `[bash] git remote add origin <github repository url>`.
-    5. Run `[bash] git push -u origin main` to push.
+10. Connect to `GitHub` and do the first push.
 11. Create additional branches and do the workflow setup.
-12. Aliases:
-    1. Run `[bash] code $HOME/.bashrc` to open the `Bash shell script`.
-    2. Add `[file] alias git_last_msg="git log -1 --pretty=%B"` to the file and save it to create an alias to get the last `Git`  commit message.
-    3. Run `[bash] source $HOME/.bashrc` to apply the changes on the `Bash shell script`.
-13. Pre-commits:
+12. Pre-commits:
     1. Run `[bash] poetry add gitlint` to install `Gitlint`.
     2. Run `[bash] touch .gitlint` to create a new `Gitlint` configuration file.
     3. Run `[bash] code .gitlint`  to open the file and add the following text to config `Gitlint`:
@@ -214,6 +202,7 @@
     2. Cd to project home directory.
     3. Run `[bash] poetry shell` to activate the environment.
     4. Run `[bash] poetry add black isort flake8 pep8-naming mypy pydocstyle` to install `Isort`, `Flake8`, `Black`, `Mypy`, `Pep8-naming`, and `Pydocstyle`.
+    5. Run `[bash] code pyproject.toml` to edit the config file and change `^` for `=` in the libraries above.
 - Config files:
     - `Flake8` (to make it work with the other tools):
         1. From `VS Code` in a `Linux` session, open a new terminal.
@@ -231,7 +220,9 @@
             ```
 
     - `Black`:
-        1. Run `[bash] code pyproject.toml` to open the `pyproject` file and add the following text. These changes are required to make the library compatible with the rest of the format/linter tools.
+        1. From `VS Code` in a `Linux` session, open a new terminal.
+        2. Cd to project home directory.
+        3. Run `[bash] code pyproject.toml` to open the `pyproject` file and add the following text. These changes are required to make the library compatible with the rest of the format/linter tools.
 
             ```[file]
                 [tool.black]
@@ -250,6 +241,17 @@
                 | dist
                 )/
                 '''
+            ```
+
+    - `Pydocstyle`:
+        1. From `VS Code` in a `Linux` session, open a new terminal.
+        2. Cd to project home directory.
+        3. Run `[bash] touch .pydocstyle` to create a new `Pydocstyle` config file.
+        4. Run `[bash] code .pydocstyle` to open the file and add the following text to define the convention:
+
+            ```file
+            [pydocstyle]
+            convention = pep257
             ```
 
 - `VS Code`:
@@ -272,6 +274,7 @@
                 rev: <github tag>
                 hooks:
                 - id: black
+                  args: [--diff]
             -   repo: https://gitlab.com/pycqa/flake8
                 rev: <github tag>
                 hooks:
@@ -286,6 +289,7 @@
                 rev: <github tag>
                 hooks:
                 - id: isort
+                  args: [--diff]
             -   repo: https://github.com/PyCQA/pydocstyle
                 rev: <github tag>
                 hooks:
@@ -301,6 +305,14 @@
     2. Run `[bash] poetry shell` to activate the environment.
     3. Run `[bash] poetry add nbstripout` to install `Nbstripout`.
     4. Run `[bash] poetry add jupytext` to install `Jupytext`. Don't change the metadata config for `Jupytext` as this could cause problems in the `Pre-commit`.
+    5. Cd to the notebooks folder and run `[bash] touch .pydocstyle` tp add the `pydocstyle` config file.
+    6. Run `[bash] code .pydocstyle` to edit the config file and add the following text to skip the D100 rule for the notebooks as they don't need a PyDocString at the beginning of the code. Save and close.
+
+        ```file
+        [pydocstyle]
+        add-ignore = D100
+        ```
+
 - `Git hooks`:
     1. From `VS Code` in a `Linux` session, open a new terminal in your `Linux` project folder.
     2. Run `[bash] code .pre-commit-config.yaml` to open the config file and add the hooks in the following format. `<github tag>` refers to the tag on `GitHub` that corresponds to the version of the package that was installed locally (the versions can be checked on `pyproject.toml`):

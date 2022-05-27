@@ -10,7 +10,10 @@ This project focuses on sharing the best practices to create Data Science and An
 
 ## Installation
 
-- Installation instructions will be provided once the Jupyter notebooks and scripts have been created.
+- Clone the project.
+- Run `[Bash] Poetry shell` to create the Poetry virtual environment.
+- Run `[Bash] Poetry install` to install all the dependencies.
+- Run `[Bash] pre-commit install --hook-type commit-msg` and `[Bash] pre-commit install` to install the pre-commits.
 
 ## Usage
 
@@ -29,6 +32,7 @@ This project focuses on sharing the best practices to create Data Science and An
 ├── .python-version                          <- Pyenv config file
 ├── LICENSE                                  <- Project license
 ├── Poetry.lock                              <- Poetry lock file
+├── .pydocstyle                              <- Pydocstyle config file
 ├── pyproject.toml                           <- Project config file
 ├── README.md                                <- The top-level README for developers using this project
 │
@@ -47,7 +51,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## TODOs
 
-- [ ] Cheat sheets:
+- [ ] Cheat-sheets:
     - [ ] Python - core elements (WIP)
     - [ ] Python - Scikit-learn
     - [ ] Python - PySpark

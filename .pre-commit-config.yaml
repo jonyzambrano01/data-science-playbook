@@ -7,6 +7,7 @@ repos:
     rev: 22.1.0
     hooks:
     - id: black
+      args: [--diff]
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 4.0.1
     hooks:
@@ -21,6 +22,7 @@ repos:
     rev: 5.10.1
     hooks:
     - id: isort
+      args: [--diff]
 -   repo: https://github.com/PyCQA/pydocstyle
     rev: 6.1.1
     hooks:

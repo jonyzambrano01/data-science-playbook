@@ -17,7 +17,21 @@
 
 - Usage: use Git for all your projects, no matter the size.
 - Commits:
+    - For the first commit make sure the README is there and run:
+
+        ``` bash
+            git commit -m "first commit"
+            git branch -M main
+            git remote add origin <repo url>
+            git push -u origin main
+        ```
+
     - Commit every time you have added a new piece of code (unit of work) that is working and compiles.
+    - Remember to **ALWAYS** reformat the files before committing to avoid hot changes in `pre-commit` running `[bash] black *.py` and `isort *.py`.
+    - Remember to check the format of the notebooks using `Jupytext`:
+        - **Don't delete the metadata of the `.py` files**.
+        - Run `[bash] jupytext --set-formats ipynb,py *.ipynb` to create the `.py` copies of the notebooks.
+        - Run `[bash] jupytext --sync *.ipynb` to sync all the notebooks.
     - Run ```[bash] pre-commit``` before each commit to verify everything is working well.
     - If the `Gitlint` pre-commit fails run `[bash] git_last_msg` - which is an alias of `[bash]git log -1 --pretty=%B` - to retrieve the last message or run `[bash] git commit --amend` to try again.
 - Push: only push when the feature/problem you are working on is done.
@@ -48,6 +62,7 @@
         git push
         ```
 
+    - Paths: avoid absolute paths as this makes is difficult to collaborate. Use relative paths instead.
 - Documentation:
     - Commit:
         - Use [Gitlint](https://rb.gy/su7hjn).
@@ -79,6 +94,7 @@
     - README file:
         - Follow the [make a README guide](https://rb.gy/z5nle8).
         - Follow the [choose an open source license guide](https://rb.gy/oektp5).
+        - Don't put license, TODOs, or contributing for private projects.
         - Use a template, e.g:
 
             ```file
@@ -140,7 +156,7 @@
     - Classes are in `CamelCase`.
     - Don't use names longer than 30 characters.
     - Names must begin with a letter and may not end with an underscore.
-    - Use `__` for throwaway variables (e.g., unpacking or tuples results).
+    - Use `_<variable name>` for throwaway variables (e.g., unpacking or tuples results).
     - Variable names must describe the information represented by the variable.
     - Don't use **magic numbers** - variables/constants that are hardcoded and/or have a non-intuitive name:
         - Incorrect:
