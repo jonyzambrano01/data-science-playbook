@@ -32,10 +32,12 @@
         - **Don't delete the metadata of the `.py` files**.
         - Run `[bash] jupytext --set-formats ipynb,py *.ipynb` to create the `.py` copies of the notebooks.
         - Run `[bash] jupytext --sync *.ipynb` to sync all the notebooks.
-    - Run ```[bash] pre-commit``` before each commit to verify everything is working well.
+    - Run `[bash] pre-commit` before each commit to verify everything is working well.
     - If the `Gitlint` pre-commit fails run `[bash] git_last_msg` - which is an alias of `[bash]git log -1 --pretty=%B` - to retrieve the last message or run `[bash] git commit --amend` to try again.
 - Push: only push when the feature/problem you are working on is done.
-- Pull & fetch: every time you are going to start and before committing.
+- Pull & fetch: every time you are going to start and before committing:
+    - `[bash] git fetch origin main`
+    - `[bash] git pull origin main`
 - Solo projects workflow:
     - Follow the [Git for solo development guide](https://rb.gy/ewfiap), the [Git quick guide](https://rb.gy/102pkh), and the [Git workflows documentation](https://rb.gy/a2arsk).
     - Create the following branches:
