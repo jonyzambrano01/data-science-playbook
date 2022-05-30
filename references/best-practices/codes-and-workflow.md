@@ -27,7 +27,7 @@
         ```
 
     - Commit every time you have added a new piece of code (unit of work) that is working and compiles.
-    - Remember to **ALWAYS** reformat the files before committing to avoid hot changes in `pre-commit` running `[bash] black *.py` and `isort *.py`.
+    - Remember to **ALWAYS** reformat the files before committing to avoid hot changes in `pre-commit` running `[bash] black *.py`, `[bash] isort *.py`, and `[bash] nbstripout *.ipynb`.
     - Remember to check the format of the notebooks using `Jupytext`:
         - **Don't delete the metadata of the `.py` files**.
         - Run `[bash] jupytext --set-formats ipynb,py *.ipynb` to create the `.py` copies of the notebooks.
